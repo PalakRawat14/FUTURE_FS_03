@@ -1,0 +1,231 @@
+.about {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+.about-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(200, 155, 109, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.about-grid.animate-in {
+  animation: aboutFadeIn 1s ease forwards;
+}
+
+@keyframes aboutFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.about-image-wrapper {
+  position: relative;
+}
+
+.about-image-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  z-index: 2;
+}
+
+.about-image-frame img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  transition: transform 0.7s var(--transition-smooth);
+}
+
+.about-image-frame:hover img {
+  transform: scale(1.05);
+}
+
+.about-image-accent {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-lg);
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.about-experience-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  z-index: 3;
+  background: var(--bg-card);
+  border: 1px solid rgba(200, 155, 109, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-card);
+}
+
+.badge-number {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.badge-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-description {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.about-timeline {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 20px;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.timeline-item.timeline-enter {
+  animation: timelineSlide 0.7s ease forwards;
+}
+
+@keyframes timelineSlide {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid var(--bg-primary);
+  box-shadow: 0 0 0 2px var(--primary);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.timeline-line {
+  width: 1px;
+  flex: 1;
+  background: linear-gradient(to bottom, rgba(200, 155, 109, 0.3), transparent);
+  min-height: 40px;
+}
+
+.timeline-item:last-child .timeline-line {
+  display: none;
+}
+
+.timeline-content {
+  padding-bottom: 28px;
+}
+
+.timeline-year {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+
+.timeline-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+
+.timeline-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+@media (max-width: 968px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-image-frame img {
+    height: 360px;
+  }
+
+  .about-experience-badge {
+    bottom: -16px;
+    right: -10px;
+    padding: 12px 18px;
+  }
+
+  .badge-number {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    padding: 80px 0;
+  }
+
+  .about-image-frame img {
+    height: 280px;
+  }
+
+  .about-image-accent {
+    display: none;
+  }
+
+  .about-experience-badge {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: -30px;
+    margin-left: 20px;
+    display: inline-flex;
+    width: fit-content;
+  }
+}

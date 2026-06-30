@@ -1,0 +1,189 @@
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.coffee-cup {
+  position: relative;
+  width: 80px;
+  height: 90px;
+  animation: cupBounce 1.5s ease-in-out infinite;
+}
+
+.cup-body {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 60px;
+  background: linear-gradient(135deg, #2a1a0e, #3c2415);
+  border-radius: 0 0 8px 8px;
+  border: 2px solid var(--primary);
+  overflow: hidden;
+}
+
+.cup-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(180deg, #5a3a1a, #3c2415);
+  border-radius: 0 0 6px 6px;
+  animation: fillPulse 2s ease-in-out infinite;
+}
+
+.coffee-surface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--secondary);
+  border-radius: 2px;
+  animation: surfaceShimmer 2s ease-in-out infinite;
+}
+
+.cup-handle {
+  position: absolute;
+  right: -16px;
+  top: 12px;
+  width: 18px;
+  height: 28px;
+  border: 2px solid var(--primary);
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+}
+
+.steam-container {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+}
+
+.steam {
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(to top, rgba(200, 155, 109, 0.4), transparent);
+  border-radius: 2px;
+  animation: steamRise 2s ease-out infinite;
+}
+
+.steam-1 { animation-delay: 0s; }
+.steam-2 { animation-delay: 0.4s; }
+.steam-3 { animation-delay: 0.8s; }
+
+@keyframes cupBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes fillPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes surfaceShimmer {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes steamRise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scaleX(1);
+  }
+  30% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-28px) scaleX(1.5);
+  }
+}
+
+@keyframes cupFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.loading-text {
+  text-align: center;
+}
+
+.loading-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--primary);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.loading-tagline {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 280px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 3px;
+  background: rgba(200, 155, 109, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.progress-percentage {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--primary);
+  min-width: 36px;
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .progress-container {
+    width: 220px;
+  }
+
+  .loading-title {
+    font-size: 1.6rem;
+  }
+}

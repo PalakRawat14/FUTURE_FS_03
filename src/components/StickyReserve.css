@@ -1,0 +1,46 @@
+.sticky-reserve {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  z-index: 950;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--primary);
+  color: var(--bg-primary);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(200, 155, 109, 0.4);
+  transition: all 0.4s var(--transition-smooth);
+  opacity: 0;
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.sticky-reserve.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.sticky-reserve:hover {
+  background: var(--secondary);
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 12px 40px rgba(200, 155, 109, 0.5);
+}
+
+.sticky-reserve:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .sticky-reserve {
+    display: none;
+  }
+}
